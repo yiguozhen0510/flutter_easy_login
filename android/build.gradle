@@ -1,0 +1,85 @@
+group 'com.opun.flutter_easy_login'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 19
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+//    sourceSets {
+//        main {
+//            res.srcDirs = ['src/main/res', 'src/main/res-login']
+//        }
+//    }
+
+    packagingOptions {
+//        pickFirst 'res/values/values.xml'
+//        pickFirst 'AndroidManifest.xml'
+//        pickFirst 'res/drawable/login_bg.xml'
+//        pickFirst 'R.txt'
+//        pickFirst 'classes.jar'
+
+//        exclude 'libs/CMCCSSOSDK-release.aar/res/values/values.xml'
+//        exclude 'libs/CTAccountSdk_HY_v3.7.0_all.aar/res/values/values.xml'
+//        exclude 'libs/loginsdk1.0.4-release.aar/res/values/values.xml'
+
+        merge 'res/values/values.xml'
+        merge 'AndroidManifest.xml'
+        merge 'res/drawable/login_bg.xml'
+        merge 'R.txt'
+        merge 'classes.jar'
+    }
+}
+
+//    亿美一键登录依赖包
+//implementation(name: 'CMCCSSOSDK-release', ext: 'aar')
+//implementation(name: 'loginsdk1.0.4-release', ext: 'aar')
+//implementation(name: 'CTAccountSdk_HY_v3.7.0_all', ext: 'aar')
+//implementation(name: 'Ui-factory_oauth_mobile_3.8.3.1', ext: 'aar')
+//implementation 'com.alibaba:fastjson:1.2.58'
+//implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation 'com.alibaba:fastjson:1.2.31'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+}

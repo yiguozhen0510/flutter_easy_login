@@ -1,0 +1,50 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.opun.flutter_easy_login">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <application
+        android:allowBackup="true"
+        tools:replace="android:allowBackup"
+        android:supportsRtl="true"
+        >
+        <!--	移动	-->
+        <!--	若只有普通登录页面，则不需要声明ActivityDialogStyle	-->
+        <activity
+            android:name="com.cmic.sso.sdk.activity.LoginAuthActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="unspecified"
+            android:theme="@style/Theme.ActivityDialogStyle"></activity>
+        <!--	联通	-->
+        <activity
+            android:name="com.sdk.mobile.manager.login.cucc.OauthActivity"
+            android:screenOrientation="portrait"
+            tools:replace="android:theme"
+            android:theme="@style/Theme.ActivityDialogStyle"/>
+        <!--        电信-->
+        <!--	若只有普通登录页面，则不需要声明MiniAuthActivity	-->
+        <activity
+            android:name="cn.com.chinatelecom.account.sdk.ui.AuthActivity"
+            android:exported="false"
+            android:theme="@style/ct_account_act_theme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="cn.com.chinatelecom.account.sdk.ui.PrivacyWebviewActivity"
+            android:exported="false"
+            android:theme="@style/ct_account_act_theme"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="cn.com.chinatelecom.account.sdk.ui.MiniAuthActivity"
+            android:exported="false"
+            android:theme="@style/ct_account_mini_act_theme"/>
+    </application>
+</manifest>
